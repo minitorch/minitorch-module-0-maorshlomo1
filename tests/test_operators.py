@@ -109,12 +109,12 @@ def test_sigmoid(a: float) -> None:
     """
     return_a = sigmoid(a)
 
-    assert return_a >= 0.0 and return_a<= 1.0
-    assert_close(1-return_a, sigmoid(-a))
+    assert return_a >= 0.0 and return_a <= 1.0
+    assert_close(1 - return_a, sigmoid(-a))
     if a >= 0.5:
         assert return_a >= 0
 
-    assert sigmoid(a+ 1) >= sigmoid(a)
+    assert sigmoid(a + 1) >= sigmoid(a)
 
 
 @pytest.mark.task0_2
@@ -138,13 +138,12 @@ def test_symmetric(a: float, b: float) -> None:
 
 @pytest.mark.task0_2
 @given(small_floats, small_floats, small_floats)
-def test_distribute(x, y, z) -> None:
+def test_distribute(x: float, y: float, z: float) -> None:
     r"""
     Write a test that ensures that your operators distribute, i.e.
     :math:`z \times (x + y) = z \times x + z \times y`
     """
-    assert_close(mul(z, add(x,y)) , mul(z,x) + mul(z, y))
-
+    assert_close(mul(z, add(x, y)), mul(z, x) + mul(z, y))
 
 
 @pytest.mark.task0_2
@@ -181,8 +180,7 @@ def test_sum_distribute(ls1: List[float], ls2: List[float]) -> None:
     Write a test that ensures that the sum of `ls1` plus the sum of `ls2`
     is the same as the sum of each element of `ls1` plus each element of `ls2`.
     """
-    assert_close(sum(addLists(ls1, ls2)), sum(ls1) +  sum(ls2))
-
+    assert_close(sum(addLists(ls1, ls2)), sum(ls1) + sum(ls2))
 
 
 @pytest.mark.task0_3

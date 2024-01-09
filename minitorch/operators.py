@@ -38,7 +38,7 @@ def lt(x: float, y: float) -> float:
 def eq(x: float, y: float) -> float:
     "$f(x) =$ 1.0 if x is equal to y else 0.0"
     # TODO: Implement for Task 0.1.
-    return 1.0 if  x == y else 0
+    return 1.0 if x == y else 0
 
 
 def max(x: float, y: float) -> float:
@@ -50,7 +50,7 @@ def max(x: float, y: float) -> float:
 def is_close(x: float, y: float) -> float:
     "$f(x) = |x - y| < 1e-2$"
     # TODO: Implement for Task 0.1.
-    return -(1e-2) <  x-y < 1e-2
+    return -(1e-2) < x - y < 1e-2
 
 
 def sigmoid(x: float) -> float:
@@ -113,7 +113,7 @@ def inv_back(x: float, d: float) -> float:
 def relu_back(x: float, d: float) -> float:
     r"If $f = relu$ compute $d \times f'(x)$"
     # TODO: Implement for Task 0.1.
-    return d* (1 if x >= 0 else 0)
+    return d * (1 if x >= 0 else 0)
 
 
 # ## Task 0.3
@@ -160,16 +160,16 @@ def zipWith(
          applying fn(x, y) on each pair of elements.
 
     """
+
     # TODO: Implement for Task 0.3.
-    def ret_function(ls1, ls2):
+    def ret_function(ls1: Iterable[float], ls2: Iterable[float]) -> Iterable[float]:
         return_val = []
-        for i in range(len(ls1)):
-            return_val.append(fn(ls1[i], ls2[i]))
+        for item1, item2 in zip(ls1, ls2):
+            return_val.append(fn(item1, item2))
 
         return return_val
 
     return ret_function
-
 
 
 def addLists(ls1: Iterable[float], ls2: Iterable[float]) -> Iterable[float]:
@@ -193,13 +193,14 @@ def reduce(
          $x_1 \ldots x_n$ and computes the reduction :math:`fn(x_3, fn(x_2,
          fn(x_1, x_0)))`
     """
-    def func(ls):
+
+    def func(ls: Iterable[float]) -> float:
         return_val = start
         for i in ls:
             return_val = fn(return_val, i)
 
         return return_val
-    
+
     return func
 
 
